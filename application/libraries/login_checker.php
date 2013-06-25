@@ -24,9 +24,8 @@ class Login_checker {
 
 		if ($fb_user) {
 			try {
-				$user_details = $facebook->api('/me', 'GET', array('fields' => 'name,email', 'scope' => 'email,read_stream'));
+				$user_details = $facebook->api('/me', 'GET', array('fields' => 'name,email'));
 				$data['fb_name'] = $user_details['name'];
-				var_dump($user_details);
 				$this->CI->home_model->fb_login($fb_user, $user_details['name'], $user_details['email']);
 			} catch (FacebookApiException $e) {
 				$fb_user = null;
