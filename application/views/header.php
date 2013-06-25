@@ -13,7 +13,7 @@
 				<a href="">About</a>
 				<a href="">Contacts</a>
 				<? if ($fb_user) { ?>
-					<a href="">Hey <? echo $fb_username; ?></a>
+					<a href="">Hey <? echo $fb_name; ?></a>
 				<? } else { ?>
 					<fb:login-button></fb:login-button>
 				<? } ?>

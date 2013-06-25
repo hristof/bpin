@@ -26,9 +26,8 @@ class Home extends CI_Controller {
 
 		if ($fb_user) {
 			try {
-				$fb_username = $facebook->api('/me', 'GET', array('fields' => 'username'));
-				var_dump($fb_username);
-				$data['fb_username'] = $fb_username;
+				$user_details = $facebook->api('/me', 'GET', array('fields' => 'name'));
+				$data['fb_name'] = $user_details['name'];
 				$this->home_model->fb_login($fb_user);
 			} catch (FacebookApiException $e) {
 				$user = null;
