@@ -8,7 +8,7 @@ class Home_model extends CI_Model {
 
 	public function fb_login($fb_user_id)
 	{
-		$this->db->query('INSERT INTO users (reg_type, facebook_id) VALUES (?, ?)', array(1, $fb_user_id));
+		$this->db->query('INSERT IGNORE INTO users (reg_type, facebook_id) VALUES (?, ?)', array(1, $fb_user_id));
 	}
 	
 }
