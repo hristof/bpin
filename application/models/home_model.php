@@ -6,7 +6,7 @@ class Home_model extends CI_Model {
 		parent::__construct();
 	}
 
-	public function fb_login($fbuser)
+	public function fb_login($fb_username)
 	{
 		
 	}
