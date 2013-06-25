@@ -172,14 +172,13 @@
 		font-size: 2em;
 		letter-spacing: 2px;
 	}
-	div.labels , button.register{
+	div.labels {
 		float:left;
 		text-align:right;
 	}
 	
 	div.fields {
 		float:right;
-		
 	}
 	
 	label {

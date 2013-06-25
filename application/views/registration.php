@@ -16,8 +16,8 @@
 					<input type="email" name="email" id="email"><br> <br>
 					<input type="password" name="password" id="password"><br> <br>
 					<input type="password" name="passwordconf" id="passwordconf"><br> <br>
+					<button class="register" type="button">Register</button>
 				</div>
-				<button class="register" type="button">Register</button>
 			</form>
 		</fieldset>
 	</section>
