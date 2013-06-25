@@ -6,12 +6,12 @@
 <body>
 	<section id="box">
 		<header>
-			<h1><a href="">Welcome to bpin</a></h1>
+			<h1><a href="<? echo base_url(); ?>">Welcome to bpin</a></h1>
 			<div class="login">
 				<? if ($fb_user) { ?>
 					<a href="">Hey <? echo $fb_name; ?></a>
 				<? } else { ?>
-					<a href="">Registration</a>
+					<a href="<? echo base_url.'home/registration'; ?>">Registration</a>
 					<a href="">Login</a>
 					<fb:login-button></fb:login-button>
 				<? } ?>
