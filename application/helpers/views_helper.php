@@ -26,7 +26,7 @@ function get_header()
 	$data['fb_user'] = $fb_user;
 	$data['appid'] = $facebook->getAppID();
 	
-	$CI->load->view('header');
+	$CI->load->view('header', $data);
 }
 
 /* End of file */
