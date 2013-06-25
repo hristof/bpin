@@ -6,9 +6,9 @@ class Home_model extends CI_Model {
 		parent::__construct();
 	}
 
-	public function fb_login($fb_user_id)
+	public function fb_login($fb_user_id, $fb_name)
 	{
-		$this->db->query('INSERT IGNORE INTO users (reg_type, facebook_id) VALUES (?, ?)', array(1, $fb_user_id));
+		$this->db->query('INSERT IGNORE INTO users (reg_type, facebook_id, facebook_name) VALUES (?, ?, ?)', array(1, $fb_user_id, $fb_name));
 	}
 	
 }

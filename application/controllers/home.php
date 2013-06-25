@@ -28,7 +28,7 @@ class Home extends CI_Controller {
 			try {
 				$user_details = $facebook->api('/me', 'GET', array('fields' => 'name'));
 				$data['fb_name'] = $user_details['name'];
-				$this->home_model->fb_login($fb_user);
+				$this->home_model->fb_login($fb_user, $user_details['name']);
 			} catch (FacebookApiException $e) {
 				$fb_user = null;
 			}

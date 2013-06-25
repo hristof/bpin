@@ -15,7 +15,7 @@
 				<? if ($fb_user) { ?>
 					<a href="">Hey <? echo $fb_name; ?></a>
 				<? } else { ?>
-					<fb:login-button width="500"></fb:login-button>
+					<fb:login-button></fb:login-button>
 				<? } ?>
 				<div id="fb-root"></div>
 				<script>
