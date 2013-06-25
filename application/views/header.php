@@ -13,7 +13,7 @@
 				<? } else { ?>
 					<a href="<? echo base_url().'home/register'; ?>">Registration</a>
 					<a href="">Login</a>
-					<fb:login-button perms="email" autologoutlink="true"></fb:login-button>
+					<fb:login-button perms="email"></fb:login-button>
 				<? } ?>
 				<div id="fb-root"></div>
 				<script>
