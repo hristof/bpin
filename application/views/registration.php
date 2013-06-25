@@ -1,7 +1,7 @@
 	<section class="body">
 		<fieldset>
 			<legend>Registration</legend>
-			<form action="">
+			<form action="<? echo base_url().'home/register'; ?>" method="post">
 				<div class="labels">
 					<label for="firstName">Full Name :</label> <br> <br>
 					<label for="username">Username :</label> <br>	<br>
