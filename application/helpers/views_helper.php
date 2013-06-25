@@ -1,5 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed'); 
 
+require_once (APPPATH . '../assets/facebook-php-sdk/facebook.php');
+
 function get_header()
 {
 	$CI = &get_instance();
