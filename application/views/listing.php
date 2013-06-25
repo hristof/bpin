@@ -6,7 +6,7 @@
 				<li> <img src="<? echo base_url().'assets/img/image2.png'; ?>" /> <p class="description">Art</p> </li>
 				<li> <img src="<? echo base_url().'assets/img/image1.jpg'; ?>" /> <p class="description">Nature</p> </li>
 				<li> <img src="<? echo base_url().'assets/img/image2.png'; ?>" /> <p class="description">Science</p> </li>
-				<li> <img src="<? echo base_url().'assets/img/image1.jpg'; ?> /> <p class="description">Marriage</p> </li>
+				<li> <img src="<? echo base_url().'assets/img/image1.jpg'; ?>" /> <p class="description">Marriage</p> </li>
 				<li> <img src="<? echo base_url().'assets/img/image2.png'; ?>" /> <p class="description">Tools</p> </li>
 				<li> <img src="<? echo base_url().'assets/img/image1.jpg'; ?>" /> <p class="description">Technologies</p> </li>
 				<li> <img src="<? echo base_url().'assets/img/image2.png'; ?>" /> <p class="description">Birds</p> </li>
