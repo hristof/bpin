@@ -12,8 +12,8 @@
 				<a href="">Home</a>
 				<a href="">About</a>
 				<a href="">Contacts</a>
-				<? if ($fbuser) { ?>
-					<a href="">Hey <? echo $fbuser; ?></a>
+				<? if ($fb_user) { ?>
+					<a href="">Hey <? echo $fb_user; ?></a>
 				<? } else { ?>
 					<fb:login-button></fb:login-button>
 				<? } ?>
