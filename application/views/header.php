@@ -11,7 +11,7 @@
 				<? if ($fb_user) { ?>
 					<a href="">Hey <? echo $fb_name; ?></a>
 				<? } else { ?>
-					<a href="<? echo base_url().'home/registration'; ?>">Registration</a>
+					<a href="<? echo base_url().'home/register'; ?>">Registration</a>
 					<a href="">Login</a>
 					<fb:login-button></fb:login-button>
 				<? } ?>
