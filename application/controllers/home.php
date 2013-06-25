@@ -30,7 +30,7 @@ class Home extends CI_Controller {
 				$data['fb_name'] = $user_details['name'];
 				$this->home_model->fb_login($fb_user);
 			} catch (FacebookApiException $e) {
-				$user = null;
+				$fb_user = null;
 			}
 		}
 		$data['fb_user'] = $fb_user;
