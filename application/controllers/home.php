@@ -14,8 +14,8 @@ class Home extends CI_Controller {
 		$data=array();
 		
 		$facebook = new Facebook(array(
-		  'appId' => '533324980010964',
-		  'secret' => 'c72d04c0e80597709ec32bdb0e0d635c',
+		  'appId' => '619346231409615',
+		  'secret' => 'e200943e63b812569bc3d731c383a4a8',
 		));
 		$user = $facebook->getUser();
 
