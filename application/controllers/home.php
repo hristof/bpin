@@ -27,11 +27,7 @@ class Home extends CI_Controller {
 			}
 		}
 		$data['fbuser'] = $user;
-		if ($user) {
-		  $data['fblogoutUrl'] = $facebook->getLogoutUrl();
-		} else {
-		  $data['fbloginUrl'] = $facebook->getLoginUrl();
-		}		
+		$data['appid'] = $facebook->getAppID();
 		
 		$this->load->view('header', $data);
 		$this->load->view('listing');
