@@ -6,15 +6,13 @@
 <body>
 	<section id="box">
 		<header>
-			<h1><a href="">bpin</a></h1>  <!--Този линк трябва да сочи към началната страница-->
-			
-			<nav>
-				<a href="">Home</a>
-				<a href="">About</a>
-				<a href="">Contacts</a>
+			<h1><a href="">Welcome to bpin</a></h1>
+			<div class="login">
 				<? if ($fb_user) { ?>
 					<a href="">Hey <? echo $fb_name; ?></a>
 				<? } else { ?>
+					<a href="">Registration</a>
+					<a href="">Login</a>
 					<fb:login-button></fb:login-button>
 				<? } ?>
 				<div id="fb-root"></div>
@@ -39,6 +37,9 @@
 						document.getElementById('fb-root').appendChild(e);
 					}());
 				</script>
+			</div>
+			<nav>
+				<a href="">Home</a>
 			</nav>
 			<div class="clear"> </div>
 		</header>

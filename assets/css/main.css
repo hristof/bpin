@@ -9,7 +9,201 @@
 		width: 100%;
 		border-top: outset;
 		border-bottom: outset;
-		background-color: #2F4F4F;
+		background-color: #0F0F0F;
+		margin-bottom: 30px;
+	}
+	nav {
+		float:left;
+		margin-bottom: 10px;
+		position: relative;
+		left: 150px;
+		
+	}
+	nav a {
+		margin: 10px;
+		color: white;
+		text-decoration: none;
+		font-family: Arial;
+		letter-spacing: 2px;
+	}
+	nav a:hover {
+		color: red;
+	}
+	header h1  {
+		font-family:Arial;
+		font-style: italic;
+		font-size: 3em;
+		text-align: center;
+		color: white;
+	}
+	h1 a {
+		text-decoration: none;
+		color:white;
+	}	
+	.login {
+		float: right;
+	}
+	.login a {
+		text-align: right;
+		text-decoration: none;
+		margin: 10px;
+		color: white;
+		font-family: Arial;
+		letter-spacing: 2px;
+	}
+	.login a:hover {
+		color: red;
+	}
+	.clear {
+		clear: both;
+	}
+	section.body {
+		width: 90%;
+		margin-left: 100px;
+		margin-right: 100px;
+		margin-top: 50px;
+	}	
+	div.name {
+		font-size: 3em;
+	}
+	ul {
+		list-style-type:none;
+		margin:0;
+		padding:0;
+	}
+	ul li p {
+		text-align: center;
+		font-size: 1.5em;
+		font-style: italic;
+		color: blue;
+	}
+	ul li {
+		float: left;
+		margin: 5px;
+		border: 2px solid;
+	}
+	
+	ul li img {
+		width: 200px;
+		height: 250px;
+	}
+	div.button {
+		text-align:center;
+	}
+	.loadMore {
+		height: 30px;
+		width: 100px;
+	}
+	
+		#box {
+		width: 100%;
+		
+	}
+	body {
+		background-color: #D3D3D3;
+	}
+	header {
+		width: 100%;
+		border-top: outset;
+		border-bottom: outset;
+		background-color: #0F0F0F;
+		margin-bottom: 30px;
+	}
+	nav {
+		float:left;
+		margin-bottom: 10px;
+		position: relative;
+		left: 150px;
+		
+	}
+	nav a {
+		margin: 10px;
+		color: white;
+		text-decoration: none;
+		font-family: Arial;
+		letter-spacing: 2px;
+	}
+	nav a:hover {
+		color: red;
+	}
+	header h1  {
+		font-family:Arial;
+		font-style: italic;
+		font-size: 3em;
+		text-align: center;
+		color: white;
+	}
+	h1 a {
+		text-decoration: none;
+		color:white;
+	}	
+	.login {
+		float: right;
+	}
+	.login a {
+		text-align: right;
+		text-decoration: none;
+		margin: 10px;
+		color: white;
+		font-family: Arial;
+		letter-spacing: 2px;
+	}
+	.login a:hover {
+		color: red;
+	}
+	.clear {
+		clear: both;
+	}
+	section.body {
+		width: 90%;
+		margin-left: 100px;
+		margin-right: 100px;
+		margin-top: 50px;
+	}	
+	fieldset {
+		width: 45%;
+		position: relative;
+		right: 50px;
+		text-align: center;
+		margin: auto;
+	}
+	fieldset legend {
+		font-style: italic;
+		font-size: 2em;
+		letter-spacing: 2px;
+	}
+	div.labels {
+		float:left;
+		text-align:right;
+	}
+	
+	div.fields {
+		float:right;
+		
+	}
+	
+	label {
+		font-size: 1.5em;
+		
+	}
+	input {
+		width: 300px;
+		height: 110%;
+		margin: 3px auto;
+	}
+	
+		#box {
+		width: 100%;
+		
+	}
+	body {
+		background-color: #D3D3D3;
+	}
+	header {
+		width: 100%;
+		border-top: outset;
+		border-bottom: outset;
+		background-color: #0F0F0F;
 		margin-bottom: 30px;
 	}
 	nav {
@@ -61,11 +255,16 @@
 	}
 	ul li p {
 		text-align: center;
-		font-size: 1.5em;
+		font-size: 1.4em;
 		font-style: italic;
 		color: blue;
+		width: 200px;
+		position: relative;
+		top: -20px;
 	}
 	ul li {
+		width: 200px;
+		height:400px;
 		float: left;
 		margin: 5px;
 		border: 2px solid;

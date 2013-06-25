@@ -37,7 +37,7 @@ class Home extends CI_Controller {
 		$data['appid'] = $facebook->getAppID();
 		
 		$this->load->view('header', $data);
-		$this->load->view('listing');
+		$this->load->view('homepage');
 		$this->load->view('footer');
 	}
 }
