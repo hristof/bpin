@@ -2,11 +2,11 @@
 
 require_once (APPPATH . '../assets/facebook-php-sdk/src/facebook.php');
 
-class Sidebar {
+class Login_checker {
 	
 	var $CI="";
 	
-	public sfunction Sidebar()
+	public function login_checker()
 	{
 		$this->CI = &get_instance();
 		$this->CI->load->model('home_model');
