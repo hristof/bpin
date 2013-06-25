@@ -11,7 +11,6 @@ class Home extends CI_Controller {
 
 	public function show()
 	{
-		echo APPPATH;
 		$data=array();
 		
 		$facebook = new Facebook(array(
