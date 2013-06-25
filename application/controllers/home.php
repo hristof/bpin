@@ -1,6 +1,6 @@
 <?php
 
-//require_once (APPPATH . '../assets/facebook-php-sdk/src/facebook.php');
+require_once (APPPATH . '../assets/facebook-php-sdk/src/facebook.php');
 
 class Home extends CI_Controller {
 
@@ -11,7 +11,7 @@ class Home extends CI_Controller {
 
 	public function show()
 	{
-		echo $APPPATH;
+		echo APPPATH;
 		$data=array();
 		
 		$facebook = new Facebook(array(
