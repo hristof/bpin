@@ -33,6 +33,8 @@ class Login_checker {
 		}
 		$data['fb_user'] = $fb_user;
 		$data['appid'] = $facebook->getAppID();
+		
+		return $data;
 	}
 }
 ?>
