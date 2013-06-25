@@ -4,6 +4,11 @@ require_once (APPPATH . '../assets/facebook-php-sdk/src/facebook.php');
 
 class Home extends CI_Controller {
 
+	public function __construct() {
+		parent::__construct();
+		$this->load->model('home');
+	}
+
 	public function index()
 	{
 		$this->show();
@@ -17,16 +22,17 @@ class Home extends CI_Controller {
 		  'appId' => '619346231409615',
 		  'secret' => 'e200943e63b812569bc3d731c383a4a8',
 		));
-		$user = $facebook->getUser();
+		$fbuser = $facebook->getUser();
 
-		if ($user) {
+		if ($fbuser) {
 			try {
-				$user_profile = $facebook->api('/me');
+				$fbuser_name = $facebook->api('/me', 'GET', array('fields' => 'username'));
+				//$this->home->fblogin($fbuser);
 			} catch (FacebookApiException $e) {
 				$user = null;
 			}
 		}
-		$data['fbuser'] = $user;
+		$data['fbuser'] = $fbuser;
 		$data['appid'] = $facebook->getAppID();
 		
 		$this->load->view('header', $data);
@@ -35,4 +41,4 @@ class Home extends CI_Controller {
 	}
 }
 
-?>
+/* End of file */

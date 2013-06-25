@@ -13,7 +13,7 @@
 				<a href="">About</a>
 				<a href="">Contacts</a>
 				<? if ($fbuser) { ?>
-					<a href="">Hey FB Friend</a>
+					<a href="">Hey <? echo $fbuser; ?></a>
 				<? } else { ?>
 					<fb:login-button></fb:login-button>
 				<? } ?>
