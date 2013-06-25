@@ -1,6 +1,6 @@
 <?php
 
-require_once (APPPATH . '../assets/facebook-php-sdk/src/facebook.php');
+//require_once (APPPATH . '../assets/facebook-php-sdk/src/facebook.php');
 
 class Home extends CI_Controller {
 
