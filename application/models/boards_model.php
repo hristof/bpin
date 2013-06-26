@@ -12,7 +12,7 @@ class Boards_model extends CI_Model {
 		$query = $this->db->query('SELECT * FROM boards WHERE user_id=?',
 		array($user_id));
 		
-		return $query->row_array();
+		return $query;
 	}
 	
 	public function get($board_id)
