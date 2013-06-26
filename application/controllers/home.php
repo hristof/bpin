@@ -84,7 +84,6 @@ class Home extends Client_Controller {
 				{
 					// Add the fb user
 					$user_id = $this->home_model->add_fb_user($fb_user, $user_details['name'], $user_details['email']);
-					sql_e();
 					$user = $this->home_model->get_user($user_id);
 				}
 
