@@ -4,7 +4,7 @@
 	<fieldset>
 		<legend>Edit board</legend>
 		<form action="<?=base_url().'boards/edit';?>" method="post">
-			<?=validation_errors();?>
+			<? validation_errors();?>
 			<br>
 			<div class="labels">
 				<label for="title">Board title :</label>

@@ -21,9 +21,8 @@ class Boards extends Client_Controller {
 			array('field'=>'title',  		'rules'=>'trim|required|max_length[200]')
 		);
 		$this->load->library('form_validation', $rules);
-
-		if($this->form_validation->run())
-		{
+		
+		if($this->form_validation->run()) {
 			$this->boards_model->add($this->user_id);
 			redirect('boards');
 		}
