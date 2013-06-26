@@ -25,7 +25,7 @@ class Home extends CI_Controller {
 	{
 		get_header();
 		$this->setRulesAndMessages();
-		$flag = $this->validation->run();
+		$flag = $this->form_validation->run();
 		if (!$flag) {
 			$word = $this->generateWord();
 			$newdata = array('captcha' => $word);
