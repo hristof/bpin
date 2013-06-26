@@ -45,7 +45,12 @@
 				</script>
 			</div>
 			<nav>
-				<a href="">Home</a>
+				<a href="<?=base_url();?>">Home</a>
+
+				<? if($this->is_user_logged):?>
+				<a href="<?=base_url();?>/boards">Boards</a>
+				<a href="<?=base_url();?>/pins/add">Add pin</a>
+				<? endif;?>
 			</nav>
 			<div class="clear"> </div>
 		</header>

@@ -7,7 +7,6 @@ class Boards_model extends CI_Model {
 		parent::__construct();
 	}
 
-
 	public function get_boards($user_id)
 	{
 		$query = $this->db->query('SELECT * FROM boards WHERE user_id=?',
@@ -52,4 +51,5 @@ class Boards_model extends CI_Model {
 	}
 }
 
-/* End of file */
+/* End of file boards_model.php */
+/* Location: ./application/models/boards_model.php */
