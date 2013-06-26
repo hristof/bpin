@@ -9,7 +9,7 @@
 			<h1><a href="<? echo base_url(); ?>">Welcome to bpin</a></h1>
 			<div class="login">
 				<? if ($this->is_user_logged) { ?>
-					<a href=""><? echo $this->name; ?></a>
+					<a href=""><?=$this->name;?>, <a href="<?=base_url();?>/home/signout">Sign out</a></a>
 				<? } else { ?>
 					<a href="<? echo base_url().'home/register'; ?>">Registration</a>
 					<a href="">Login</a>

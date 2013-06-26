@@ -98,6 +98,12 @@ class Home extends Client_Controller {
 		}
 	}
 
+	public function signout()
+	{
+		$this->session->sess_destroy();
+		redirect();
+	}
+
 	private function generateWord()
 	{
 		$lenght=6;
