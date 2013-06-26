@@ -35,8 +35,13 @@ class Pins_model extends CI_Model {
 	{
 		$_P=remove_html($_POST);
 
+		// Add the pin
 		$this->db->query('INSERT INTO pins SET board_id=?, user_id=?, title=?, thumb=?, link=?, date_added=?',
 		array($_P['board_id'], $this->user_id, $_P['title'], $image, $_P['site_url'], time()));
+
+		// Update the thumb of the board
+		$this->db->query("UPDATE boards SET thumb=? WHERE board_id=?",
+		array($_POST['board_id']));
 
 		return $this->db->insert_id();
 	}
