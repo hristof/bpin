@@ -92,9 +92,9 @@ class Home extends Client_Controller {
 				$this->session->set_userdata('user_id', $user->user_id);
 				$this->session->set_userdata('name', 	$user->fullname);
 
-			} catch (FacebookApiException $e){
-				redirect();
-			}
+			} catch (FacebookApiException $e){}
+
+			redirect();
 		}
 	}
 
