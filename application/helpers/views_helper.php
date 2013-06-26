@@ -5,7 +5,7 @@ require_once (APPPATH . '../assets/facebook-php-sdk/src/facebook.php');
 function get_header()
 {
 	$CI = &get_instance();
-	$CI->load->view('header', $data);
+	$CI->load->view('header');
 }
 
 function get_footer()
