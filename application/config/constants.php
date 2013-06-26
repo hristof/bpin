@@ -40,6 +40,7 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
 define('FB_APP_ID','619346231409615');
 define('FB_SECRET','e200943e63b812569bc3d731c383a4a8');
+define('UPL_PATH', 'uploads');
 
 
 /* End of file constants.php */

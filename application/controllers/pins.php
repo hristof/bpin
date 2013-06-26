@@ -5,162 +5,126 @@ class Pins extends Client_Controller {
 	function __construct()
 	{
 		parent::__construct();
-		$this->user_logged=TRUE;
-		$this->user_id=2;
 
-
-		//r_n_logged();
+		r_n_logged();
 	}
 
-    public function index()
+    public function index($board_id=0)
     {
-		/*$this->load->model("pins_model");
+		$this->load->model("pins_model");
+		$this->load->model('boards_model');
 
-		$page=intval($this->uri->segment(4,0));
+		// Check if the board exists
+		$board=$this->boards_model->get($board_id);
+		if( ! $board) redirect("boards");
+
+		// Pagination
+		$from=intval($this->uri->segment(4,0));
 		$limit=10;
-		$count=$this->pins_model->get_user_pins_count();
+		$count=$this->pins_model->get_user_pins_count($board_id);
 
-		$config['base_url'] 		= BASE."/pins/index";
+		$config['base_url'] 		= base_url()."/pins/index/{$board_id}";
 		$config['total_rows'] 		= $count;
 		$config['per_page'] 		= $limit;
 		$config['uri_segment'] 		= 4;
-		$config['cur_tag_open']		='<a href="#" class="active">';
-		$config['cur_tag_close']	='</a>';
-		$this->load->library("pagination",$config);
+		$this->load->library('pagination', $config);
+		// End pagination
 
-		$data["pag"]			    =	$count>$limit;
-		$data['magazine_deleted']	=	$this->get_flag('magazine_deleted');
-		$data['magazine_bulk']		=	$this->get_flag('magazine_bulk');
-		$data["pins"]			=	$this->pins_model->get_list($page,$limit);
-		$this->load->view('pins/list',$data);*/
+		$data['pin_added']			=	$this->get_flag('pin_added');
+		$data['pin_deleted']		=	$this->get_flag('pin_deleted');
+		$data['board']				= 	$board;
+		$data['pins']				=	$this->pins_model->get_user_pins_list($board_id, $from, $limit);
+		$this->load->view('pins/list', $data);
     }
 
 	public function add()
 	{
 		$this->load->model("pins_model");
-
-		/*$rules=array(
-			array('field'=>'title',  		'rules'=>'trim|required|max_length[300]'),
-			array('field'=>'content',  		'rules'=>'trim|required'),
-			array('field'=>'url',  		    'rules'=>'trim|required|valid_url'),
-			array('field'=>'city',  		'rules'=>'required')
-		);
-		$this->load->library("form_validation", $rules);
-
-		if($this->form_validation->run())
-		{
-			$config['upload_path'] 		= './uploads/';
-			$config['allowed_types'] 	= 'jpg|png';
-			$config['max_size']			= '6144';
-			$config['encrypt_name'] 	= TRUE;
-
-			$this->load->library('upload', $config);
-			if ($this->upload->do_upload("cover"))
-			{
-				$file=$this->upload->data();
-				$image=$file['file_name'];
-
-				$this->_create_image_files($image);
-			} else {
-				$image = '';
-			}
-
-			// Add the magazine in the DB
-			$magazine_id = $this->pins_model->add($image);
-
-			// Add cities for magazine
-			foreach($_POST['city'] as $city_id) {
-				$this->pins_model->add_cities($magazine_id, $city_id);
-			}
-
-			$this->set_flag('magazine_added', TRUE);
-			redirect("pins");
-		}
-
-		$data['cities']		=	$this->cities_model->get_all_list();*/
-		$this->load->view('pins/add');
-	}
-
-	public function edit($magazine_id=0)
-	{
-		$this->load->model("pins_model");
-		$this->load->model("cities_model");
-
-		// Check if the magazine exists
-		$magazine=$this->pins_model->get($magazine_id);
-		if( ! $magazine) redirect("pins");
+		$this->load->model('boards_model');
 
 		$rules=array(
-			array('field'=>'title',  		'rules'=>'trim|required|max_length[300]'),
-			array('field'=>'content',  		'rules'=>'trim|required'),
-			array('field'=>'url',  		    'rules'=>'trim|required|valid_url'),
-			array('field'=>'city',  		'rules'=>'required')
+			array('field'=>'title',  		'rules'=>'trim|required|max_length[200]'),
+			array('field'=>'board_id',  	'rules'=>'trim|required|is_natural_no_zero'),
+			array('field'=>'image_url',  	'rules'=>'trim|required|valid_url'),
+			array('field'=>'site_url',  	'rules'=>'trim|required|valid_url')
 		);
 		$this->load->library("form_validation", $rules);
 
 		if($this->form_validation->run())
 		{
-			$config['upload_path'] 		= './uploads/';
-			$config['allowed_types'] 	= 'jpg|png';
-			$config['max_size']			= '6144';
-			$config['encrypt_name'] 	= TRUE;
+			// Try to get the image
+			$this->load->library('page_parser');
+			$image=$this->page_parser->get_image($_POST['site_url'], $_POST['image_url']);
 
-			$this->load->library('upload', $config);
-			if ($this->upload->do_upload("cover"))
+			if(is_array($image))
 			{
-				// Delete old images
-				$this->_delete_image_files($magazine->cover);
+				// Get a unique file name
+				do{
+					$img_name=md5(uniqid().rand()).$image['img_ext'];
+					$path=UPL_PATH.'/'.$img_name;
+				}
+				while(file_exists($path));
 
-				// Create the magazine images
-				$file=$this->upload->data();
-				$image=$file['file_name'];
+				file_put_contents($path, $image['img_source']);
+				create_thumbs($img_name, 'pin_images');
 
-				$this->_create_image_files($image);
-
-			}  else {
-				$image = $magazine->cover;
+				// Add pin
+				$this->pins_model->add($img_name);
+				$this->set_flag('pin_added', TRUE);
 			}
 
-			$this->pins_model->edit($magazine_id, $image);
+			redirect("pins/index/".$_POST['board_id']);
+		}
 
-			// Add cities for magazine
-			foreach($_POST['city'] as $city_id) {
-				$this->pins_model->add_cities($magazine_id, $city_id);
-			}
+		$data['boards']	= $this->boards_model->get_boards($this->user_id);
+		$this->load->view('pins/add', $data);
+	}
+
+	public function edit($pin_id=0)
+	{
+		$this->load->model("pins_model");
+		$this->load->model('boards_model');
+
+		// Check if the pin exists
+		$pin=$this->pins_model->get($pin_id);
+		if( ! $pin) redirect("pins");
+
+		$rules=array(
+			array('field'=>'title',  		'rules'=>'trim|required|max_length[200]'),
+			array('field'=>'board_id',  	'rules'=>'trim|required|is_natural_no_zero')
+		);
+		$this->load->library("form_validation", $rules);
+
+		if($this->form_validation->run())
+		{
+			$this->pins_model->edit($pin_id);
 
 			$this->set_flag('saved', TRUE);
-			redirect("pins/edit/{$magazine_id}");
+			redirect("pins/edit/{$pin_id}");
 		}
 
-		$mag_cities = $this->pins_model->get_cities($magazine_id);
-		$magazine_cities_arr = array();
-		foreach($mag_cities as $mag_city) {
-			$magazine_cities_arr[] = $mag_city->city_id;
-		}
-
-		$data['saved']			 =	$this->get_flag('saved');
-		$data["magazine"]		 =	$this->pins_model->get($magazine_id);
-		$data['magazine_cities'] =  $magazine_cities_arr;
-		$data['cities']			 =	$this->cities_model->get_all_list();
+		$data['saved']	= $this->get_flag('saved');
+		$data['pin']	= $this->pins_model->get($pin_id);
+		$data['boards']	= $this->boards_model->get_boards($this->user_id);
 		$this->load->view('pins/edit', $data);
 	}
 
-	public function delete($magazine_id=0)
+	public function delete($board_id=0, $pin_id=0)
 	{
 		$this->load->model("pins_model");
 
-		// Check if the magazine exists
-		$magazine=$this->pins_model->get($magazine_id);
-		if( ! $magazine_id || ! $magazine) redirect("pins");
+		// Check if the pin exists
+		$pin=$this->pins_model->get($pin_id);
+		if( ! $pin) redirect("pins/index/$board_id");
 
 		// Delete the image files
-		$this->_delete_image_files($magazine->cover);
+		delete_thumbs($img_name, 'pin_images');
 
-		// Delete the magazine itself
-		$this->pins_model->delete($magazine_id);
+		// Delete the pin itself
+		$this->pins_model->delete($pin_id);
 
-		$this->set_flag('magazine_deleted', TRUE);
-		redirect("pins");
+		$this->set_flag('pin_deleted', TRUE);
+		redirect("pins/index/$board_id");
 	}
 }
 

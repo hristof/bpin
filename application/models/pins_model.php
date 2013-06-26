@@ -7,53 +7,48 @@ class Pins_model extends CI_Model {
 		parent::__construct();
 	}
 
-	function get_user($user_id)
+	public function get($pin_id)
 	{
-		$query = $this->db->query("SELECT * FROM users WHERE user_id = ?",
-		array($user_id));
+		$query = $this->db->query("SELECT * FROM pins WHERE pin_id=? AND user_id=?",
+		array($pin_id, $this->user_id));
 
 		return $query->row();
 	}
 
-	function get_fb_user($user_id)
+	public function get_user_pins_count($board_id)
 	{
-		$query = $this->db->query("SELECT * FROM users WHERE facebook_id = ?",
-		array($user_id));
+		$query = $this->db->query("SELECT COUNT(*) AS cnt FROM pins WHERE board_id=?",
+		array($board_id));
 
-		return $query->row();
+		return $query->row()->cnt;
 	}
 
-	public function add_fb_user($fb_user_id, $fb_name, $email)
+	public function get_user_pins_list($board_id)
 	{
-		$this->db->query('INSERT IGNORE INTO users (reg_type, facebook_id, fullname, email) VALUES (?, ?, ?, ?)',
-		array(1, $fb_user_id, $fb_name, $email));
+		$query = $this->db->query("SELECT * FROM pins WHERE board_id=?",
+		array($board_id));
+
+		return $query->result();
+	}
+
+	public function add($image)
+	{
+		$_P=remove_html($_POST);
+
+		$this->db->query('INSERT INTO pins SET board_id=?, user_id=?, title=?, thumb=?, link=?, date_added=?',
+		array($_P['board_id'], $this->user_id, $_P['title'], $image, $_P['site_url'], time()));
 
 		return $this->db->insert_id();
 	}
 
-	public function register($fullname, $uname, $email, $password)
+	public function edit($pin_id)
 	{
-		$this->db->query('INSERT INTO users (reg_type, fullname, username, email, password) VALUES (?, ?, ?, ?, ?)', array(0, $fullname, $uname, $email, $password));
-	}
+		$_P=remove_html($_POST);
 
-	public function usernameCheck($uname)
-	{
-		$result = $this->db->query('select * from users where username=?', array($uname));
-		if ($result->row_array()==null)
-			return true;
-		else
-			return false;
+		$this->db->query('UPDATE pins SET board_id=?, title=? WHERE pin_id=?',
+		array($_P['board_id'], $_P['title'], $pin_id));
 	}
-
-	public function emailCheck($email)
-	{
-		$result = $this->db->query('select * from users where email=?', array($email));
-		if ($result->row_array()==null)
-			return true;
-		else
-			return false;
-	}
-
 }
 
-/* End of file */
+/* End of file pins_model.php */
+/* Location: ./application/models/pins_model.php */

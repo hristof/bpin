@@ -11,6 +11,8 @@
 		<legend>Add Pin</legend>
 		<br>
 
+		<?=validation_errors();?>
+
 		Enter URL:<br>
 		<input type="text" name="url" id="pin_url">
 		<input type="button" value="Add" onclick="parse_url()">
@@ -18,6 +20,11 @@
 
 		<form action="" method="post" id="add_pin_form" style="display:none">
 			<input type="text" name="title" id="pin_title">
+			<select name="board_id">
+				<? foreach($boards->result() as $b):?>
+				<option value="<?=$b->board_id;?>"><?=$b->title;?></option>
+				<? endforeach;?>
+			</select>
 			<div id="pin_images" class="pin-images"></div>
 			<br>
 

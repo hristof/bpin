@@ -2,9 +2,6 @@
 <html xmlns:fb="http://www.facebook.com/2008/fbml">
 <head>
 	<link  rel="stylesheet" type="text/css" href="<? echo base_url().'assets/css/main.css'; ?>">
-	<link  rel="stylesheet" type="text/css" href="<? echo base_url().'assets/css/main.css';?>">
-	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 </head>
