@@ -7,6 +7,7 @@ class Boards_model extends CI_Model {
 		parent::__construct();
 	}
 
+
 	public function get_boards($user_id)
 	{
 		$query = $this->db->query('SELECT * FROM boards WHERE user_id=?',
@@ -25,7 +26,7 @@ class Boards_model extends CI_Model {
 
 	public function add($user_id)
 	{
-		$date_added = date('Y-m-d', time());
+		$date_added = date('Y-m-d');
 		$this->db->query('INSERT INTO boards VALUES (null, ?, ?, ?, ?)',
 		array($user_id, $this->input->post('title'), '', $date_added) );
 	}

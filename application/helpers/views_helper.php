@@ -5,13 +5,13 @@ require_once (APPPATH . '../assets/facebook-php-sdk/src/facebook.php');
 function get_header()
 {
 	$CI = &get_instance();
-	$CI->load->view('header');
+	$CI->load->view('etc/header');
 }
 
 function get_footer()
 {
 	$CI = &get_instance();
-	$CI->load->view('footer');
+	$CI->load->view('etc/footer');
 }
 
 function redirect_logged()

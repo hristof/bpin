@@ -3,8 +3,8 @@
 <section class="body">
 	<fieldset>
 		<legend>Edit board</legend>
-		<form action="<?=base_url().'boards/edit';?>" method="post">
-			<? validation_errors(); ?>
+		<form action="<?=base_url().'boards/edit/'.$board_id;?>" method="post">
+			<?=validation_errors();?>
 			<br>
 			<div class="labels">
 				<label for="title">Board title :</label>
@@ -12,7 +12,7 @@
 			</div>
 			
 			<div class="fields">
-				<input type="text" title="title" id="title" value="<?=$title;?>">
+				<input type="text" name="title" id="title" value="<?=$title;?>">
 				<br><br>
 				<button type="submit">Edit</button>
 			</div>

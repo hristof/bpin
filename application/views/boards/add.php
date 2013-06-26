@@ -4,7 +4,7 @@
 	<fieldset>
 		<legend>Add board</legend>
 		<form action="<?=base_url().'boards/add';?>" method="post">
-			<? validation_errors(); ?>
+			<?=validation_errors();?>
 			<br>
 			<div class="labels">
 				<label for="title">Board title :</label>
@@ -12,7 +12,7 @@
 			</div>
 			
 			<div class="fields">
-				<input type="text" title="title" id="title" value="<?=$this->input->post('title');?>">
+				<input type="text" name="title" id="title" value="<?=$this->input->post('title');?>">
 				<br><br>
 				<button type="submit">Add</button>
 			</div>
