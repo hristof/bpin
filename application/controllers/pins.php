@@ -102,7 +102,7 @@ class Pins extends Client_Controller {
 			$this->pins_model->edit($pin_id);
 
 			$this->set_flag('saved', TRUE);
-			redirect("pins/edit/{$pin_id}");
+			redirect("pins/index/".$_POST['board_id']);
 		}
 
 		$data['saved']	= $this->get_flag('saved');
