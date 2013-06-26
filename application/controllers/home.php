@@ -36,7 +36,7 @@ class Home extends Client_Controller {
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|md5');
 		
 		if ($this->form_validation->run()) {
-			$result = $this->homemodel->login_check();
+			$result = $this->home_model->login_check();
 			if ($result!=null) {
 				$newdata = array(
 					'user_id' => $result['user_id'],
