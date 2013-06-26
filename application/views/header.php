@@ -6,14 +6,14 @@
 <body>
 	<section id="box">
 		<header>
-			<h1><a href="<? echo base_url(); ?>">Welcome to bpin</a></h1>
+			<h1><a href="<?=base_url(); ?>">Welcome to bpin</a></h1>
 			<div class="login">
 				<? if ($this->is_user_logged) { ?>
 					<a href=""><?=$this->name;?>, <a href="<?=base_url();?>/home/signout">Sign out</a></a>
 				<? } else { ?>
 					<a href="<? echo base_url().'home/register'; ?>">Registration</a>
 					<a href="">Login</a>
-					<fb:login-button perms="email"></fb:login-button>
+					<a href="javascript:" onclick="FBLogin()">Login with Facebook</a>
 				<? } ?>
 				<div id="fb-root"></div>
 				<script>
@@ -24,15 +24,21 @@
 							xfbml: true,
 							oauth: true
 						});
-						FB.Event.subscribe('auth.login', function(response) {
-							window.location='<?=base_url();?>/home/register_with_fb';
-						});
 					};
 					(function() {
 						var e = document.createElement('script'); e.async = true;
 						e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
 						document.getElementById('fb-root').appendChild(e);
 					}());
+
+					function FBLogin()
+					{
+						FB.login(function(response) {
+							if (response.authResponse) {
+								window.location="<?=base_url();?>/home/register_with_fb";
+							}
+						},{scope: 'email'});
+					}
 				</script>
 			</div>
 			<nav>
