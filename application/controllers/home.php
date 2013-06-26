@@ -23,7 +23,7 @@ class Home extends Client_Controller {
 	{
 		redirect_logged();
 		$this->setRulesAndMessages();
-		if ($this->form_validation->run()) {
+		if (! $this->form_validation->run()) {
 			$word = $this->generateWord();
 			$newdata = array('captcha' => $word);
 			$this->session->sess_destroy();
