@@ -23,6 +23,7 @@ class Home extends CI_Controller {
 	
 	public function register()
 	{
+		check_for_logged_user();
 		get_header();
 		$this->setRulesAndMessages();
 		$flag = $this->form_validation->run();
@@ -80,7 +81,7 @@ class Home extends CI_Controller {
 		return $newcode;
 	}
 	
-	function setRulesAndMessages()
+	private function setRulesAndMessages()
 	{
 		$this->form_validation->set_rules('fullname', 'Full Name', 'trim|required|min_length[3]|max_legth[200]|alpha_numeric');
 		$this->form_validation->set_rules('uname', 'Username', 'trim|required|min_length[3]|max_legth[200]|alpha_numeric|callback_usernameCheck');
@@ -111,7 +112,7 @@ class Home extends CI_Controller {
 		return $this->homemodel->usernameCheck($str);
 	}
 	
-	function emailCheck($str)
+	public function emailCheck($str)
 	{
 		return $this->homemodel->emailCheck($str);
 	}

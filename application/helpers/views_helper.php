@@ -35,4 +35,25 @@ function get_footer()
 	$CI->load->view('footer');
 }
 
+function check_for_logged_user()
+{
+	$CI = &get_instance();
+	
+	$facebook = new Facebook(array(
+	  'appId' => '619346231409615',
+	  'secret' => 'e200943e63b812569bc3d731c383a4a8',
+	));
+	$fb_user = $facebook->getUser();
+	if ($fb_user) {
+		try {
+			$user_details = $facebook->api('/me');
+		} catch (FacebookApiException $e) {
+			$fb_user = null;
+		}
+	}
+	
+	if ($fb_user || $CI->session->userdata('logged_in'))
+		redirect(base_url());
+}
+
 /* End of file */
