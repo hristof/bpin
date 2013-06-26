@@ -5,8 +5,11 @@ class Pins extends Client_Controller {
 	function __construct()
 	{
 		parent::__construct();
+		$this->user_logged=TRUE;
+		$this->user_id=2;
 
-		r_n_logged();
+
+		//r_n_logged();
 	}
 
     public function index()
