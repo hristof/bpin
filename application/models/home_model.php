@@ -13,7 +13,7 @@ class Home_model extends CI_Model {
 	
 	public function register($fullname, $uname, $email, $password)
 	{
-		$this->db->query('INSERT INTO users (reg_type, fulllname, username, email, password) VALUES (?, ?, ?, ?, ?)', array(0, $fullname, $uname, $email, $password));
+		$this->db->query('INSERT INTO users (reg_type, fullname, username, email, password) VALUES (?, ?, ?, ?, ?)', array(0, $fullname, $uname, $email, $password));
 	}
 	
 	public function usernameCheck($uname)
