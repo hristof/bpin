@@ -9,7 +9,10 @@ class Pins_model extends CI_Model {
 
 	public function get($pin_id)
 	{
-		$query = $this->db->query("SELECT * FROM pins WHERE pin_id=? AND user_id=?",
+		$query = $this->db->query("
+		SELECT *
+		FROM pins
+		WHERE pin_id=? AND user_id=?",
 		array($pin_id, $this->user_id));
 
 		return $query->row();
@@ -17,7 +20,12 @@ class Pins_model extends CI_Model {
 
 	public function get_last_from_board($board_id)
 	{
-		$query = $this->db->query("SELECT * FROM pins WHERE board_id=? AND user_id=? ORDER BY date_added DESC LIMIT 1",
+		$query = $this->db->query("
+		SELECT *
+		FROM pins
+		WHERE board_id=? AND user_id=?
+		ORDER BY date_added DESC
+		LIMIT 1",
 		array($board_id, $this->user_id));
 
 		return $query->row();
@@ -25,16 +33,24 @@ class Pins_model extends CI_Model {
 
 	public function get_user_pins_count($board_id)
 	{
-		$query = $this->db->query("SELECT COUNT(*) AS cnt FROM pins WHERE board_id=?",
+		$query = $this->db->query("
+		SELECT COUNT(*) AS cnt
+		FROM pins
+		WHERE board_id=?",
 		array($board_id));
 
 		return $query->row()->cnt;
 	}
 
-	public function get_user_pins_list($board_id)
+	public function get_user_pins_list($board_id, $from, $limit)
 	{
-		$query = $this->db->query("SELECT * FROM pins WHERE board_id=?",
-		array($board_id));
+		$query = $this->db->query("
+		SELECT *
+		FROM pins
+		WHERE board_id=?
+		ORDER BY date_added DESC
+		LIMIT ?,?",
+		array($board_id, $from, $limit));
 
 		return $query->result();
 	}
