@@ -15,7 +15,7 @@
 				</li>
 			<?}?>
 		</ul>
-		<button type="button" onclick="<?=base_url().'boards/add';?>">Add</button>
+		<button type="button" onclick="parent.location='<?=base_url().'boards/add';?>'">Add</button>
 	<div class="clear"> </div>
 </section>
 
