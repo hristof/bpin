@@ -49,9 +49,9 @@ class Home extends Client_Controller {
 			} else {
 				$this->load->view('login', array('flag' => 1));
 			}
+		} else {
+			$this->load->view('login', array('flag' => 0));
 		}
-		
-		$this->load->view('login', array('flag' => 0));
 	}
 
 	public function register()
