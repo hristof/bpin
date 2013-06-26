@@ -12,9 +12,6 @@
 			<? endforeach;?>
 		</ul>
 		<div class="clear"> </div>
-		<div class="button">
-		<button class="loadMore" type="button" onclick="">Load More</button>
-		</div>
 	</div>
 </section>
 
