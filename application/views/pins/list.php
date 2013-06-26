@@ -2,7 +2,7 @@
 
 <? if($pin_added):?>
 The pin was added!
-<? endif;>
+<? endif;?>
 
 <? if($pin_deleted):?>
 The pin was removed!
