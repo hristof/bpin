@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/bpin';
+$config['base_url']	= 'http://bpin.hristof.com';
 
 /*
 |--------------------------------------------------------------------------
