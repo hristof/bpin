@@ -45,7 +45,7 @@ class Home extends Client_Controller {
 				$this->session->sess_destroy();
 				$this->session->sess_create();
 				$this->session->set_userdata($newdata);
-				redirect();
+				redirect('boards');
 			} else {
 				$this->load->view('login', array('flag' => 1));
 			}
@@ -86,7 +86,7 @@ class Home extends Client_Controller {
 
 			$this->home_model->register($fullname, $uname, $email, $password);
 
-			$this->load->view('homepage');
+			redirect();
 		}
 	}
 
