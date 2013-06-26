@@ -3,7 +3,7 @@
 <section class="body">
 	<fieldset>
 		<legend>Login</legend>
-		<form action="<?=base_url().'home/logn';?>" method="post">
+		<form action="<?=base_url().'home/login';?>" method="post">
 			<? if(validation_errors() || $flag) echo "<p>Invalid login. Please try again.</p>";?>
 			<br>
 			<div class="labels">
