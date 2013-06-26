@@ -18,6 +18,14 @@ class Pins_model extends CI_Model {
 		return $query->row();
 	}
 
+	public function get_all_from_board($board_id)
+	{
+		$query = $this->db->query("SELECT * FROM pins WHERE board_id=?",
+		array($board_id));
+
+		return $query->result();
+	}
+
 	public function get_last_from_board($board_id)
 	{
 		$query = $this->db->query("
@@ -78,6 +86,9 @@ class Pins_model extends CI_Model {
 	{
 		$this->db->query('DELETE FROM pins WHERE pin_id=?',
 		array($pin->pin_id));
+
+		// Delete the image files
+		delete_thumbs($pin->thumb, 'pin_images');
 	}
 }
 

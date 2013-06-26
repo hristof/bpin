@@ -131,9 +131,6 @@ class Pins extends Client_Controller {
 			$this->boards_model->set_board_thumb($new_thumb, $pin->board_id);
 		}
 
-		// Delete the image files
-		delete_thumbs($pin->thumb, 'pin_images');
-
 		// Delete the pin itself
 		$this->pins_model->delete($pin);
 

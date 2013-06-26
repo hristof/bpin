@@ -38,9 +38,17 @@ class Boards_model extends CI_Model {
 
 	public function delete($board_id)
 	{
+		// Delete the pins from the board
+		$this->load->model('pins_model');
+
+		$pins = $this->pins_model->get_all_from_board($board_id);
+		foreach($pins as $p)
+		{
+			$this->pins_model->delete($p);
+		}
+
+		// Delete the board itself
 		$this->db->query('DELETE FROM boards WHERE board_id=?',
-		array($board_id));
-		$this->db->query('DELETE FROM pins WHERE board_id=?',
 		array($board_id));
 	}
 
