@@ -17,8 +17,8 @@ class Boards_model extends CI_Model {
 
 	public function get($board_id)
 	{
-		$query = $this->db->query('SELECT * FROM boards WHERE board_id=?',
-		array($board_id));
+		$query = $this->db->query('SELECT * FROM boards WHERE board_id=? AND user_id=?',
+		array($board_id, $this->user_id));
 
 		return $query->row_array();
 	}
