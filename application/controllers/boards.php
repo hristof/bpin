@@ -25,7 +25,7 @@ class Boards extends Client_Controller {
 		if($this->form_validation->run()) {
 			$this->boards_model->add($this->user_id);
 			redirect('boards');
-		} else echo "nooooo";
+		}
 		
 		$this->load->view('boards/add');
 	}
