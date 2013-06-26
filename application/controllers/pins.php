@@ -20,7 +20,7 @@ class Pins extends Client_Controller {
 
 		// Pagination
 		$from=intval($this->uri->segment(4,0));
-		$limit=10;
+		$limit=1;
 		$count=$this->pins_model->get_user_pins_count($board_id);
 
 		$config['base_url'] 		= base_url()."/pins/index/{$board_id}";
