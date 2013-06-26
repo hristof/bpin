@@ -1,5 +1,13 @@
 <? get_header();?>
 
+<? if($pin_added):?>
+The pin was added!
+<? endif;>
+
+<? if($pin_deleted):?>
+The pin was removed!
+<? endif;>
+
 <section class="body">
 	<div class="listing"><?=$board['title'];?> &gt; Pin Listing</div>
 	<br>

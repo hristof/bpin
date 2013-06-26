@@ -119,6 +119,10 @@ function parse_url()
             if(parserXHR) parserXHR.abort();
         }, 25000);
     }
+    else
+    {
+    	alert('This is not a valid URL.');
+    }
 }
 
 function set_parser_info(msg)
