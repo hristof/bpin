@@ -7,7 +7,7 @@
 			<? foreach($pins as $p):?>
 			<li>
 				<img src="<?=get_image_url($p->thumb, 200, 250);?>" alt="<?=$p->title;?>">
-				<p class="description"><?=substr($p->title, 0, 70);?></p>
+				<p class="description"><a href="<?=$p->link;?>" target="_blank"><?=substr($p->title, 0, 70);?></a></p>
 			</li>
 			<? endforeach;?>
 		</ul>
