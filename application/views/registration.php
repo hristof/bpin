@@ -14,7 +14,7 @@
 				
 				<div class="fields">
 					<input type="text" name="fullname" id="fullname" value="<? echo $this->input->post('fullname'); ?>"><br> <br>
-					<input type="text" name="uame" id="uname" value="<? echo $this->input->post('uname'); ?>"><br> <br>
+					<input type="text" name="uname" id="uname" value="<? echo $this->input->post('uname'); ?>"><br> <br>
 					<input type="email" name="email" id="email" value="<? echo $this->input->post('email'); ?>"><br> <br>
 					<input type="password" name="password" id="password"><br> <br>
 					<input type="password" name="passwordconf" id="passwordconf"><br> <br>
