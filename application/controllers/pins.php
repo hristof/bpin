@@ -118,7 +118,7 @@ class Pins extends Client_Controller {
 		if( ! $pin) redirect("pins/index/$board_id");
 
 		// Delete the image files
-		delete_thumbs($img_name, 'pin_images');
+		delete_thumbs($pin->thumb, 'pin_images');
 
 		// Delete the pin itself
 		$this->pins_model->delete($pin_id);
