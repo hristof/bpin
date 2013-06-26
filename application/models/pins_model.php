@@ -39,6 +39,25 @@ class Pins_model extends CI_Model {
 		return $query->row();
 	}
 
+	public function get_recent_pins_count()
+	{
+		$query = $this->db->query("SELECT COUNT(*) AS cnt FROM pins");
+
+		return $query->row()->cnt;
+	}
+
+	public function get_recent_pins_list($from, $limit)
+	{
+		$query = $this->db->query("
+		SELECT *
+		FROM pins
+		ORDER BY date_added DESC
+		LIMIT ?,?",
+		array($from, $limit));
+
+		return $query->result();
+	}
+
 	public function get_user_pins_count($board_id)
 	{
 		$query = $this->db->query("

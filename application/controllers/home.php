@@ -11,12 +11,22 @@ class Home extends Client_Controller {
 
 	public function index()
 	{
-		$this->show();
-	}
+		$this->load->model("pins_model");
 
-	public function show()
-	{
-		$this->load->view('homepage');
+		// Pagination
+		$from=intval($this->uri->segment(3,0));
+		$limit=1;
+		$count=$this->pins_model->get_recent_pins_count();
+
+		$config['base_url'] 		= base_url()."/home/index";
+		$config['total_rows'] 		= $count;
+		$config['per_page'] 		= $limit;
+		$config['uri_segment'] 		= 3;
+		$this->load->library('pagination', $config);
+		// End pagination
+
+		$data['pins'] =	$this->pins_model->get_recent_pins_list($from, $limit);
+		$this->load->view('homepage', $data);
 	}
 
 	public function register()
