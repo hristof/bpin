@@ -122,7 +122,7 @@ class Pins extends Client_Controller {
 
 		// If the thumb of the pin is a thumb of the board
 		$board=$this->boards_model->get($pin->board_id);
-		if($board->thumb==$pin->thumb)
+		if($board['thumb']==$pin->thumb)
 		{
 			$last_pin = $this->pins_model->get_last_from_board($pin->board_id);
 			if($last_pin) $new_thumb = $last_pin->thumb;
