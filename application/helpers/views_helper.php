@@ -26,4 +26,13 @@ function r_n_logged()
 	if (! $CI->session->userdata('is_user_logged')) redirect(base_url());
 }
 
+// debug
+
+function sql_e()
+{
+	$ci=& get_instance();
+	echo $ci->db->last_query();
+	echo $ci->db->_error_message();
+}
+
 /* End of file */
