@@ -32,8 +32,8 @@ class Home extends Client_Controller {
 	public function login()
 	{
 		redirect_logged();
-		$this->validation->set_rules('uname', 'Username', 'trim|required');
-		$this->validation->set_rules('password', 'Password', 'trim|required|md5');
+		$this->form_validation->set_rules('uname', 'Username', 'trim|required');
+		$this->form_validation->set_rules('password', 'Password', 'trim|required|md5');
 		
 		if ($this->form_validation->run()) {
 			$result = $this->homemodel->login_check();
