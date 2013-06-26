@@ -12,7 +12,7 @@
 			</div>
 			
 			<div class="fields">
-				<input type="text" title="title" id="title" value="<?=$title;?>">
+				<input type="text" name="title" id="title" value="<?=$title;?>">
 				<br><br>
 				<button type="submit">Edit</button>
 			</div>
