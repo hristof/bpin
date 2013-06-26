@@ -51,6 +51,9 @@ class Home_model extends CI_Model {
 		if ($result->row_array()==null) return true;
 		else return false;
 	}
+	
+	
+	
 
 }
 

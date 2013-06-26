@@ -51,9 +51,9 @@ class Boards extends Client_Controller {
 		$this->load->view('boards/edit', $data);
 	}
 
-	public function delete($magazine_id=0)
+	public function delete($board_id=0)
 	{
-		$this->boards_model->delete($magazine_id);
+		$this->boards_model->delete($board_id);
 		redirect("boards");
 	}
 }
