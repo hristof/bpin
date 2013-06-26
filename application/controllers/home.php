@@ -80,8 +80,6 @@ class Home extends Client_Controller {
 
 				// Try to get a fb user with this facebook_id
 				$user = $this->home_model->get_fb_user($fb_user);
-				sql_e();
-				print_r($user);
 				if( ! $user)
 				{
 					// Add the fb user
