@@ -26,6 +26,8 @@ class Home_model extends CI_Model {
 	{
 		$this->db->query('INSERT IGNORE INTO users (reg_type, facebook_id, fullname, email) VALUES (?, ?, ?, ?)',
 		array(1, $fb_user_id, $fb_name, $email));
+
+		return $this->db->insert_id();
 	}
 
 	public function register($fullname, $uname, $email, $password)
