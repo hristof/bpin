@@ -36,7 +36,7 @@ class Home_model extends CI_Model {
 		array(0, $fullname, $uname, $email, $password));
 	}
 
-	public function usernameCheck($uname)
+	public function username_check($uname)
 	{
 		$result = $this->db->query('SELECT * FROM users WHERE username=?',
 		array($uname));
@@ -45,7 +45,7 @@ class Home_model extends CI_Model {
 		else return false;
 	}
 
-	public function emailCheck($email)
+	public function email_check($email)
 	{
 		$result = $this->db->query('SELECT * FROM users WHERE email=?', array($email));
 		if ($result->row_array()==null) return true;
@@ -53,7 +53,12 @@ class Home_model extends CI_Model {
 	}
 	
 	
-	
+	public function login_check() {
+		$query = $this->db->query('SELECT * FROM users WHERE username=? and password=?',
+		array($this->input->post('username'), $this->input->post('password')) );
+		
+		return $query->row();
+	}
 
 }
 

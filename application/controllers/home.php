@@ -28,11 +28,36 @@ class Home extends Client_Controller {
 		$data['pins'] =	$this->pins_model->get_recent_pins_list($from, $limit);
 		$this->load->view('homepage', $data);
 	}
+	
+	public function login()
+	{
+		redirect_logged();
+		$this->validation->set_rules('uname', 'Username', 'trim|required');
+		$this->validation->set_rules('password', 'Password', 'trim|required|md5');
+		
+		if ($this->form_validation->run()) {
+			$result = $this->homemodel->login_check();
+			if ($result!=null) {
+				$newdata = array(
+					'user_id' => $result['user_id'],
+					'name' => $result['fullname'],
+					'is_user_logged' => true);
+				$this->session->sess_destroy();
+				$this->session->sess_create();
+				$this->session->set_userdata($newdata);
+				redirect();
+			} else {
+				$this->load->view('login', array('flag' => 1));
+			}
+		}
+		
+		$this->load->view('login', array('flag' => 0));
+	}
 
 	public function register()
 	{
 		redirect_logged();
-		$this->setRulesAndMessages();
+		$this->set_rules_and_messages();
 		if (! $this->form_validation->run()) {
 			$word = $this->generateWord();
 			$newdata = array('captcha' => $word);
@@ -124,7 +149,7 @@ class Home extends Client_Controller {
 		return $newcode;
 	}
 
-	private function setRulesAndMessages()
+	private function set_rules_and_messages()
 	{
 		$this->form_validation->set_rules('fullname', 'Full Name', 'trim|required|min_length[3]|max_legth[200]');
 		$this->form_validation->set_rules('uname', 'Username', 'trim|required|min_length[3]|max_legth[200]|alpha_numeric|callback_usernameCheck');
@@ -147,12 +172,12 @@ class Home extends Client_Controller {
 
 	public function usernameCheck($str)
 	{
-		return $this->home_model->usernameCheck($str);
+		return $this->home_model->username_check($str);
 	}
 
 	public function emailCheck($str)
 	{
-		return $this->home_model->emailCheck($str);
+		return $this->home_model->email_check($str);
 	}
 }
 
