@@ -6,7 +6,7 @@ The pin was added!
 
 <? if($pin_deleted):?>
 The pin was removed!
-<? endif;>
+<? endif;?>
 
 <section class="body">
 	<div class="listing"><?=$board['title'];?> &gt; Pin Listing</div>
