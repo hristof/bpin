@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Pins extends Client_Controller {
+class Boards extends Client_Controller {
 
 	function __construct()
 	{
