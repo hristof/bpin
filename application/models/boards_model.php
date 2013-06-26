@@ -45,6 +45,11 @@ class Boards_model extends CI_Model {
 		array($board_id));
 	}
 
+	public function set_board_thumb($thumb, $board_id)
+	{
+		$this->db->query("UPDATE boards SET thumb=? WHERE board_id=?",
+		array($thumb, $board_id));
+	}
 }
 
 /* End of file */

@@ -15,6 +15,14 @@ class Pins_model extends CI_Model {
 		return $query->row();
 	}
 
+	public function get_last_from_board($board_id)
+	{
+		$query = $this->db->query("SELECT * FROM pins WHERE board_id=? AND user_id=? ORDER BY date_added DESC LIMIT 1",
+		array($board_id, $this->user_id));
+
+		return $query->row();
+	}
+
 	public function get_user_pins_count($board_id)
 	{
 		$query = $this->db->query("SELECT COUNT(*) AS cnt FROM pins WHERE board_id=?",
@@ -39,10 +47,6 @@ class Pins_model extends CI_Model {
 		$this->db->query('INSERT INTO pins SET board_id=?, user_id=?, title=?, thumb=?, link=?, date_added=?',
 		array($_P['board_id'], $this->user_id, $_P['title'], $image, $_P['site_url'], time()));
 
-		// Update the thumb of the board
-		$this->db->query("UPDATE boards SET thumb=? WHERE board_id=?",
-		array($_POST['board_id']));
-
 		return $this->db->insert_id();
 	}
 
@@ -52,6 +56,12 @@ class Pins_model extends CI_Model {
 
 		$this->db->query('UPDATE pins SET board_id=?, title=? WHERE pin_id=?',
 		array($_P['board_id'], $_P['title'], $pin_id));
+	}
+
+	public function delete($pin)
+	{
+		$this->db->query('DELETE FROM pins WHERE pin_id=?',
+		array($pin->pin_id));
 	}
 }
 

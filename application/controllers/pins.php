@@ -70,6 +70,8 @@ class Pins extends Client_Controller {
 
 				// Add pin
 				$this->pins_model->add($img_name);
+				$this->boards_model->set_board_thumb($img_name, $_POST['board_id']);
+
 				$this->set_flag('pin_added', TRUE);
 			}
 
@@ -112,16 +114,28 @@ class Pins extends Client_Controller {
 	public function delete($board_id=0, $pin_id=0)
 	{
 		$this->load->model("pins_model");
+		$this->load->model('boards_model');
 
 		// Check if the pin exists
 		$pin=$this->pins_model->get($pin_id);
 		if( ! $pin) redirect("pins/index/$board_id");
 
+		// If the thumb of the pin is a thumb of the board
+		$board=$this->boards_model->get($pin->board_id);
+		if($board->thumb==$pin->thumb)
+		{
+			$last_pin = $this->pins_model->get_last_from_board($pin->board_id);
+			if($last_pin) $new_thumb = $last_pin->thumb;
+			else $new_thumb='';
+
+			$this->boards_model->set_board_thumb($new_thumb, $pin->board_id);
+		}
+
 		// Delete the image files
 		delete_thumbs($pin->thumb, 'pin_images');
 
 		// Delete the pin itself
-		$this->pins_model->delete($pin_id);
+		$this->pins_model->delete($pin);
 
 		$this->set_flag('pin_deleted', TRUE);
 		redirect("pins/index/$board_id");
