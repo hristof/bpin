@@ -57,7 +57,7 @@ class Home_model extends CI_Model {
 		$query = $this->db->query('SELECT * FROM users WHERE username=? and password=?',
 		array($this->input->post('username'), $this->input->post('password')) );
 		
-		return $query->row();
+		return $query->row_array();
 	}
 
 }
