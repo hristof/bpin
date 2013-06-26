@@ -82,7 +82,7 @@ class Home extends CI_Controller {
 	
 	function setRulesAndMessages()
 	{
-		$this->form_validation->set_rules('fullname', 'Full name', 'trim|required|min_length[3]|max_legth[200]|alpha_numeric');
+		$this->form_validation->set_rules('fullname', 'Full Name', 'trim|required|min_length[3]|max_legth[200]|alpha_numeric');
 		$this->form_validation->set_rules('uname', 'Username', 'trim|required|min_length[3]|max_legth[200]|alpha_numeric|callback_usernameCheck');
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|max_length[50]|callback_emailCheck');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[6]|max_length[200]|alpha_numeric|matches[passconfirm]|md5');
