@@ -54,7 +54,7 @@ class Home extends CI_Controller {
 			$email = $this->input->post('email');
 			$password = $this->input->post('password');
 			
-			$this->homemodel->register($fullname, $uname, $email, $password);
+			$this->home_model->register($fullname, $uname, $email, $password);
 			
 			$this->load->view('homepage');
 		}
@@ -109,12 +109,12 @@ class Home extends CI_Controller {
 	
 	public function usernameCheck($str)
 	{
-		return $this->homemodel->usernameCheck($str);
+		return $this->home_model->usernameCheck($str);
 	}
 	
 	public function emailCheck($str)
 	{
-		return $this->homemodel->emailCheck($str);
+		return $this->home_model->emailCheck($str);
 	}
 }
 
