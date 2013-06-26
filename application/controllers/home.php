@@ -23,7 +23,7 @@ class Home extends CI_Controller {
 	
 	public function register()
 	{
-		check_for_logged_user();
+		redirect_logged();
 		get_header();
 		$this->setRulesAndMessages();
 		$flag = $this->form_validation->run();

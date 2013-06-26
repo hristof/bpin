@@ -8,8 +8,8 @@
 		<header>
 			<h1><a href="<? echo base_url(); ?>">Welcome to bpin</a></h1>
 			<div class="login">
-				<? if ($fb_user) { ?>
-					<a href=""><? echo $fb_name; ?></a>
+				<? if ($is_user_logged) { ?>
+					<a href=""><? echo $name; ?></a>
 				<? } else { ?>
 					<a href="<? echo base_url().'home/register'; ?>">Registration</a>
 					<a href="">Login</a>
