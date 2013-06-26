@@ -29,4 +29,10 @@ function get_header()
 	$CI->load->view('header', $data);
 }
 
+function get_footer()
+{
+	$CI = &get_instance();
+	$CI->load->view('footer');
+}
+
 /* End of file */

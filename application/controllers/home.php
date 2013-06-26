@@ -4,6 +4,8 @@ class Home extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
+		$this->load->library('form_validation');
+		$this->load->helper('captcha');
 		$this->load->model('home_model');
 	}
 
@@ -16,14 +18,102 @@ class Home extends CI_Controller {
 	{
 		get_header();
 		$this->load->view('homepage');
-		$this->load->view('footer');
+		get_footer();
 	}
 	
 	public function register()
 	{
 		get_header();
-		$this->load->view('registration');
-		$this->load->view('footer');
+		$this->setRulesAndMessages();
+		$flag = $this->validation->run();
+		if (!$flag) {
+			$word = $this->generateWord();
+			$newdata = array('captcha' => $word);
+			$this->session->sess_destroy();
+			$this->session->sess_create();
+			$this->session->set_userdata($newdata);
+			
+			$vals = array(
+					'word'		 => $word,
+					'img_path'	 => './captcha/',
+					'img_url'	 => base_url().'captcha/',
+					'font_path'	 => './assets/font.ttf',
+					'img_width'	 => 140,
+					'img_height' => 30,
+					'expiration' => 300);
+			$cap = create_captcha($vals);
+			
+			$this->load->view('registration', array('captcha' => $cap['image']));
+			
+		} else {
+			$this->session->sess_destroy();
+			
+			$fullname = $this->input->post('fullname');
+			$uname = $this->input->post('uname');
+			$email = $this->input->post('email');
+			$password = $this->input->post('password');
+			
+			$this->homemodel->register($fullname, $uname, $email, $password);
+			
+			$this->load->view('homepage');
+		}
+		
+		get_footer();
+	}
+	
+	private function generateWord()
+	{
+		$lenght=6;
+		$newlength=0;
+		$newcode="";
+		while($newlength<$lenght) {
+			$x=1;
+			$y=2;
+			$p = rand($x,$y);
+			if($p==1){$a=48;$b=57;}  // Numbers
+			if($p==2){$a=65;$b=90;}  // UpperCase
+			$part=chr(rand($a,$b));
+			$newlength = $newlength + 1;
+			$newcode = $newcode.$part;
+		}
+		
+		return $newcode;
+	}
+	
+	function setRulesAndMessages()
+	{
+		$this->form_validation->set_rules('fullname', 'Full name', 'trim|required|min_length[3]|max_legth[200]|alpha_numeric');
+		$this->form_validation->set_rules('uname', 'Username', 'trim|required|min_length[3]|max_legth[200]|alpha_numeric|callback_usernameCheck');
+		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|max_length[50]|callback_emailCheck');
+		$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[6]|max_length[200]|alpha_numeric|matches[passconfirm]|md5');
+		$this->form_validation->set_rules('passwordconf', 'Password Again', 'trim|required');
+		$this->form_validation->set_rules('captcha', 'Captcha', 'trim|required|callback_captchaCheck');
+		
+		$this->form_validation->set_message('required', 'The field %s is required');
+		$this->form_validation->set_message('min_length', 'The field %s has minimum length');
+		$this->form_validation->set_message('max_length', 'The field %s has maximum length');
+		$this->form_validation->set_message('alpha_numeric', 'The field %s must be filled only with alphanumeric symbols');
+		$this->form_validation->set_message('valid_email', 'There must be a valid email address');
+		$this->form_validation->set_message('matches', 'The two passwords didn\'t match');
+		$this->form_validation->set_message('usernameCheck', 'The Username must be unique');
+		$this->form_validation->set_message('emailCheck', 'There is already registered user with this email address');
+		$this->form_validation->set_message('captchaCheck', 'Wrong captcha');
+	}
+	
+	public function captchaCheck($str) 
+	{
+		if ($str==$this->session->userdata('captcha')) return true;
+		else return false;
+	}
+	
+	public function usernameCheck($str)
+	{
+		return $this->homemodel->usernameCheck($str);
+	}
+	
+	function emailCheck($str)
+	{
+		return $this->homemodel->emailCheck($str);
 	}
 }
 
