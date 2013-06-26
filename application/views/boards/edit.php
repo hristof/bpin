@@ -3,7 +3,7 @@
 <section class="body">
 	<fieldset>
 		<legend>Edit board</legend>
-		<form action="<?=base_url().'boards/edit';?>" method="post">
+		<form action="<?=base_url().'boards/edit/'.$board_id;?>" method="post">
 			<?=validation_errors();?>
 			<br>
 			<div class="labels">

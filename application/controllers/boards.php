@@ -46,6 +46,7 @@ class Boards extends Client_Controller {
 			redirect('boards');
 		}
 		
+		$data['board_id'] = $board_id;
 		$data['title'] = $board['title'];
 		$this->load->view('boards/edit', $data);
 	}
