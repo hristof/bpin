@@ -6,7 +6,7 @@
 		<ul>
 			<? foreach($boards->result() as $board) {?>
 				<li>
-					<img src="<?=$board->thumb;?>" />
+					<img src="<?=get_image_url($board->thumb, 200, 250);?>" />
 					<p class="description"><?=$board->title;?></p>
 					<p class="date"><?=$board->date_added;?></p>
 					<a href="<?=base_url().'pins/index/'.$board->board_id;?>">View board</a>
