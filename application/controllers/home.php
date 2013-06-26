@@ -131,11 +131,6 @@ class Home extends Client_Controller {
 		$this->form_validation->set_rules('passwordconf', 'Password Again', 'trim|required');
 		$this->form_validation->set_rules('captcha', 'Captcha', 'trim|required|callback_captchaCheck');
 
-		$this->form_validation->set_message('required', 'The field %s is required');
-		$this->form_validation->set_message('min_length', 'The field %s has minimum length');
-		$this->form_validation->set_message('max_length', 'The field %s has maximum length');
-		$this->form_validation->set_message('alpha_numeric', 'The field %s must be filled only with alphanumeric symbols');
-		$this->form_validation->set_message('valid_email', 'There must be a valid email address');
 		$this->form_validation->set_message('matches', 'The two passwords didn\'t match');
 		$this->form_validation->set_message('usernameCheck', 'The Username must be unique');
 		$this->form_validation->set_message('emailCheck', 'There is already registered user with this email address');
