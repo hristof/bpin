@@ -65,7 +65,6 @@ class Home extends Client_Controller {
 	function register_with_fb()
 	{
 		redirect_logged();
-		$this->load->model('home_model');
 
 		$facebook = new Facebook(array(
 		  'appId'  => FB_APP_ID,
