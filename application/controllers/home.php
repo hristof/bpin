@@ -16,24 +16,19 @@ class Home extends Client_Controller {
 
 	public function show()
 	{
-		get_header();
 		$this->load->view('homepage');
-		get_footer();
 	}
 
 	public function register()
 	{
 		redirect_logged();
-		get_header();
 		$this->setRulesAndMessages();
-		$flag = $this->form_validation->run();
-		if (!$flag) {
+		if ($this->form_validation->run()) {
 			$word = $this->generateWord();
 			$newdata = array('captcha' => $word);
 			$this->session->sess_destroy();
 			$this->session->sess_create();
 			$this->session->set_userdata($newdata);
-
 			$vals = array(
 					'word'		 => $word,
 					'img_path'	 => './captcha/',
@@ -58,8 +53,6 @@ class Home extends Client_Controller {
 
 			$this->load->view('homepage');
 		}
-
-		get_footer();
 	}
 
 	function register_with_fb()

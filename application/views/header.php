@@ -1,17 +1,17 @@
 <!doctype html>
 <html xmlns:fb="http://www.facebook.com/2008/fbml">
 <head>
-	<link  rel="stylesheet" type="text/css" href="<? echo base_url().'assets/css/main.css'; ?>">
+	<link  rel="stylesheet" type="text/css" href="<? echo base_url().'assets/css/main.css';?>">
 </head>
 <body>
 	<section id="box">
 		<header>
-			<h1><a href="<?=base_url(); ?>">Welcome to bpin</a></h1>
+			<h1><a href="<?=base_url();?>">Welcome to bpin</a></h1>
 			<div class="login">
 				<? if ($this->is_user_logged) { ?>
 					<a href=""><?=$this->name;?>, <a href="<?=base_url();?>/home/signout">Sign out</a></a>
 				<? } else { ?>
-					<a href="<? echo base_url().'home/register'; ?>">Registration</a>
+					<a href="<? echo base_url().'home/register';?>">Registration</a>
 					<a href="">Login</a>
 					<a href="javascript:" onclick="FBLogin()">Login with Facebook</a>
 				<? } ?>

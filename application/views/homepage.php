@@ -1,12 +1,16 @@
-	<section class="body">
-		<div class="name">Recent Pins</div>
-		<div class="list">
-			<ul>
-				
-			</ul>
-			<div class="clear"> </div>
-			<div class="button">
-			<button class="loadMore" type="button" onclick="">Load More</button>
-			</div>
+<? get_header();?>
+
+<section class="body">
+	<div class="name">Recent Pins</div>
+	<div class="list">
+		<ul>
+			
+		</ul>
+		<div class="clear"> </div>
+		<div class="button">
+		<button class="loadMore" type="button" onclick="">Load More</button>
 		</div>
-	</section>
+	</div>
+</section>
+
+<? get_footer();?>
