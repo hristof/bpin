@@ -4,7 +4,7 @@
 	<fieldset>
 		<legend>Registration</legend>
 		<form action="<?=base_url().'home/register';?>" method="post">
-			<? validation_errors();?>
+			<?=validation_errors();?>
 			<br>
 			<div class="labels">
 				<label for="fullname">Full Name :</label>
