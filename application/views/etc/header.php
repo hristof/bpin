@@ -15,7 +15,7 @@
 					<a href="<?=base_url();?>/home/signout">Sign out</a>
 				<? } else { ?>
 					<a href="<? echo base_url().'home/register';?>">Registration</a>
-					<a href="">Login</a>
+					<a href="<?=base_url().'home/login';?>">Login</a>
 					<a href="javascript:" onclick="FBLogin()">Login with Facebook</a>
 				<? } ?>
 				<div id="fb-root"></div>
