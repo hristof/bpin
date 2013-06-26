@@ -17,13 +17,13 @@ function get_footer()
 function redirect_logged()
 {
 	$CI = &get_instance();
-	if ($CI->session->userdata('is_user_logged')) redirect(base_url());
+	if ($CI->session->userdata('is_user_logged')) redirect();
 }
 
 function r_n_logged()
 {
 	$CI = &get_instance();
-	if (! $CI->session->userdata('is_user_logged')) redirect(base_url());
+	if (! $CI->session->userdata('is_user_logged')) redirect();
 }
 
 // debug
