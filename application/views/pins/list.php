@@ -19,4 +19,6 @@
 	</div>
 </section>
 
+<?=$this->pagination->create_links();?>
+
 <? get_footer();?>
