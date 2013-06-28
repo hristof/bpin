@@ -230,8 +230,9 @@
 	}
 	ul {
 		list-style-type:none;
-		margin: 0;
-		padding: 0;
+		text-align: center;
+		/*margin: 0;
+		padding: 0;*/
 	}
 	ul li p {
 		text-align: center;
@@ -247,7 +248,7 @@
 		height: 450px;
 		margin: 5px;
 		border: 2px solid;
-		float: left;
+		/*float: left;*/
 	}
 	
 	ul li img {
