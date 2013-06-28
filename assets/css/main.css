@@ -244,10 +244,10 @@
 	}
 	ul li {
 		width: 250px;
-		height:400px;
+		height:500px;
 		margin: 5px;
 		border: 2px solid;
-		text-align: center;
+		float: left;
 	}
 	
 	ul li img {
