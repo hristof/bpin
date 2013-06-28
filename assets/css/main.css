@@ -232,26 +232,26 @@
 		list-style-type:none;
 		margin:0;
 		padding:0;
-		text-align: center;
 	}
 	ul li p {
 		text-align: center;
 		font-size: 1.4em;
 		font-style: italic;
 		color: blue;
-		width: 350px;
+		width: 300px;
 		position: relative;
 		top: -20px;
 	}
 	ul li {
-		width: 350px;
+		width: 300px;
 		height:400px;
 		margin: 5px;
 		border: 2px solid;
+		text-align: center;
 	}
 	
 	ul li img {
-		width: 350px;
+		width: 300px;
 		height: 300px;
 	}
 	div.links {
