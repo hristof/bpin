@@ -230,8 +230,7 @@
 	}
 	ul {
 		list-style-type:none;
-		margin:0;
-		padding:0;
+		text-align: center;
 	}
 	ul li p {
 		text-align: center;
@@ -244,7 +243,7 @@
 	}
 	ul li {
 		width: 250px;
-		height:500px;
+		height: 430px;
 		margin: 5px;
 		border: 2px solid;
 		float: left;
