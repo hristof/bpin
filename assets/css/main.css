@@ -238,12 +238,12 @@
 		font-size: 1.4em;
 		font-style: italic;
 		color: blue;
-		width: 300px;
+		width: 250px;
 		position: relative;
 		top: -20px;
 	}
 	ul li {
-		width: 300px;
+		width: 250px;
 		height:400px;
 		margin: 5px;
 		border: 2px solid;
@@ -251,7 +251,7 @@
 	}
 	
 	ul li img {
-		width: 300px;
+		width: 250px;
 		height: 300px;
 	}
 	div.links {

@@ -28,7 +28,9 @@ The pin was removed!
 	</div>
 </section>
 
-<?=$this->pagination->create_links();?>
+<div class="links">
+	<?=$this->pagination->create_links();?>
+</div>
 
 <script>
 function pDelete()
