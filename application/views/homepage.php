@@ -1,7 +1,6 @@
 <? get_header();?>
 
 <section class="body">
-	<div class="homeList">
 	<div class="name">Recent Pins</div>
 	<div class="list">
 		<ul>
@@ -13,7 +12,6 @@
 			<? endforeach;?>
 		</ul>
 		<div class="clear"> </div>
-	</div>
 	</div>
 </section>
 <div class="links">
