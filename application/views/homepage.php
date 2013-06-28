@@ -1,6 +1,7 @@
 <? get_header();?>
 
 <section class="body">
+	<div class="homeList">
 	<div class="name">Recent Pins</div>
 	<div class="list">
 		<ul>
@@ -13,8 +14,9 @@
 		</ul>
 		<div class="clear"> </div>
 	</div>
+	</div>
 </section>
-
-<?=$this->pagination->create_links();?>
-
+<div class="links">
+	<?=$this->pagination->create_links();?>
+</div>
 <? get_footer();?>

@@ -66,27 +66,7 @@
 	div.name {
 		font-size: 3em;
 	}
-	ul {
-		list-style-type:none;
-		margin:0;
-		padding:0;
-	}
-	ul li p {
-		text-align: center;
-		font-size: 1.5em;
-		font-style: italic;
-		color: blue;
-	}
-	ul li {
-		float: left;
-		margin: 5px;
-		border: 2px solid;
-	}
 	
-	ul li img {
-		width: 200px;
-		height: 250px;
-	}
 	div.button {
 		text-align:center;
 	}
@@ -95,7 +75,7 @@
 		width: 100px;
 	}
 	
-		#box {
+	#box {
 		width: 100%;
 		
 	}
@@ -257,7 +237,7 @@
 		font-size: 1.4em;
 		font-style: italic;
 		color: blue;
-		width: 200px;
+		width: 350px;
 		position: relative;
 		top: -20px;
 	}
@@ -270,7 +250,13 @@
 	}
 	
 	ul li img {
-		width: 200px;
-		height: 250px;
+		width: 350px;
+		height: 300px;
+	}
+	div.links {
+		text-align: center;
+	}
+	div.homeList {
+		text-align: center;
 	}
 	
